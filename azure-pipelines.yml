@@ -5,10 +5,14 @@
 
 trigger:
 - master
+#- feature
+#- dev
 
 pool:
   vmImage: 'ubuntu-latest'
+#场景
 stages: 
+#代码扫描
   - stage: CodeScan
     displayName: Code Scan
     jobs:
@@ -32,7 +36,7 @@ stages:
             checkStyleRunAnalysis: true
             pmdRunAnalysis: true
             findBugsRunAnalysis: true
-            
+ # 单元测试           
   - stage: Test
     displayName: Test Stage
     jobs:
@@ -54,7 +58,7 @@ stages:
             effectivePomSkip: false
             sonarQubeRunAnalysis: false
             checkStyleRunAnalysis: true
-
+# 打包
   - stage: Package
     displayName: Package stage
     jobs:
@@ -69,7 +73,7 @@ stages:
             jdkVersionOption: '1.11'
             jdkArchitectureOption: 'x64'
             goals: package
-
+#制品提交
   - stage: SubmitArtifact
     displayName: SubmitArtifact
     jobs:
