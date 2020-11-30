@@ -4,11 +4,13 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
+# CI 分支
 - master
 #- feature
 #- dev
 
 pool:
+# 購建環境選擇
   vmImage: 'ubuntu-latest'
 #场景
 stages: 
